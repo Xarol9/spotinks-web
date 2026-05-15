@@ -1,86 +1,57 @@
-cat <<EOF > index.html
 <!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotinks | Technical Maintenance</title>
-    <style>
-        :root {
-            --bg: #050505;
-            --accent: #00F0FF;
-            --text: #ffffff;
-            --gray: #1a1a1a;
-        }
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'JetBrains Mono', monospace;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-        }
-        .container {
-            text-align: left;
-            border-left: 2px solid var(--accent);
-            padding: 20px 40px;
-            max-width: 600px;
-        }
-        h1 {
-            color: var(--accent);
-            font-size: 2rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .status {
-            background: var(--gray);
-            padding: 5px 10px;
-            display: inline-block;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-        }
-        p {
-            line-height: 1.6;
-            color: #ccc;
-        }
-        .changelog {
-            margin-top: 30px;
-            font-size: 0.85rem;
-        }
-        .changelog ul {
-            list-style: none;
-            padding: 0;
-        }
-        .changelog li::before {
-            content: "> ";
-            color: var(--accent);
-        }
-        .loader {
-            color: var(--accent);
-            margin-top: 20px;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Spotinks | Digital Core</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="glow"></div>
+    <header>
+        <div class="logo">VOID_TEAM // STATION_01</div>
+        <div class="sys-status">MEM_OK: 2.6_STABLE</div>
+    </header>
+
     <div class="container">
-        <div class="status">SYSTEM STATUS: MAINTENANCE_MODE</div>
-        <h1>SPOTINKS NEXT</h1>
-        <p>Ми проводимо повну перебудову архітектури сервісу. Проект змінює фокус на технічну розробку та системну інтеграцію.</p>
-        <div class="changelog">
-            <strong>UPCOMING CHANGES:</strong>
-            <ul>
-                <li>Відмова від медіа-напрямку (відеомонтаж).</li>
-                <li>Фокус на Java (Minecraft plugins) та Rust розробці.</li>
-                <li>Запуск технічного хабу для користувачів Arch Linux.</li>
-                <li>Інтеграція з новим терміналом Spotinks Nexus (Telegram Bot).</li>
-            </ul>
+        <h1 class="glitch" data-text="Spotinks.">Spotinks.</h1>
+        
+        <div class="grid">
+            <div class="card span-4">
+                <h3>01 / Active Mission</h3>
+                <p>Розробка <strong>SoulKeep</strong>. Створюю унікальну механіку виживання для Minecraft 1.21.11. Система душ активована.</p>
+                <div class="code-box">> soulkeep --status: in_dev</div>
+            </div>
+            
+            <div class="card span-2">
+                <h3>02 / Environment</h3>
+                <p>Arch Linux<br><span style="color:var(--accent)">Hyprland + Zen</span></p>
+            </div>
+            
+            <div class="card span-2">
+                <h3>03 / Engineering</h3>
+                <p>Rust / Java<br><span style="color:var(--text-dim)">Backend Focus</span></p>
+            </div>
+
+            <div class="card span-4">
+                <h3>04 / Social Links</h3>
+                <div class="socials">
+                    <a href="https://github.com/xarol9" target="_blank">GitHub</a>
+                    <a href="#">YouTube</a>
+                    <a href="#">TikTok</a>
+                </div>
+            </div>
         </div>
-        <div class="loader">Loading updates... [█░░░░░░░░] 5%</div>
     </div>
+
+    <nav class="nav">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="wiki.html" class="nav-link">Wiki</a>
+    <a href="lab.html" class="nav-link">Lab</a>
+    <a href="media.html" class="nav-link">Media</a>
+    <a href="setup.html" class="nav-link">Setup</a>
+</nav>
+
+    <script src="app.js"></script>
 </body>
 </html>
-EOF
