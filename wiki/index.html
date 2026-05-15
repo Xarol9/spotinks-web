@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotinks Wiki | Core</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=JetBrains+Mono&display=swap">
+    <style>
+        :root {
+            --bg: #000000;
+            --panel: #0a0a0a;
+            --accent: #00f0ff;
+            --text-main: #ffffff;
+            --text-dim: #888888;
+            --border: #1a1a1a;
+            --glass: rgba(10, 10, 10, 0.8);
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Mobile Header */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 60px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            align-items: center;
+            padding: 0 20px;
+            justify-content: space-between;
+        }
+
+        /* Sidebar Container */
+        .sidebar {
+            width: 280px;
+            height: 100vh;
+            background: var(--panel);
+            border-right: 1px solid var(--border);
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding: 40px 20px;
+            z-index: 90;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono';
+            font-size: 0.8rem;
+            color: var(--accent);
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        .nav-group { margin-bottom: 30px; }
+        .nav-group h4 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 10px 15px;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--text-main);
+            background: var(--border);
+        }
+
+        .nav-link.active {
+            border-left: 2px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Content Area */
+        .main-content {
+            margin-left: 280px;
+            padding: 80px 60px;
+            max-width: 1000px;
+            min-height: 100vh;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .page { display: none; animation: fadeIn 0.5s ease forwards; }
+        .page.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 { font-size: 3rem; font-weight: 600; letter-spacing: -2px; margin-bottom: 20px; }
+        p { line-height: 1.8; color: var(--text-dim); font-size: 1.1rem; }
+
+        .feature-card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 16px;
+            margin-top: 40px;
+        }
+
+        .feature-card h3 { margin-top: 0; color: var(--accent); }
+
+        /* Menu Button */
+        .menu-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Tablet & Mobile Adjustments */
+        @media (max-width: 900px) {
+            .mobile-nav { display: flex; }
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.open { transform: translateX(0); }
+            .main-content { margin-left: 0; padding: 100px 30px; }
+            h1 { font-size: 2.2rem; }
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 85;
+            backdrop-filter: blur(4px);
+        }
+        .overlay.active { display: block; }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-nav">
+        <div style="font-family: 'JetBrains Mono'; font-size: 0.8rem;">SPOTINKS</div>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <span class="logo">SPOTINKS // WIKI</span>
+        
+        <nav>
+            <div class="nav-group">
+                <h4>Основи</h4>
+                <a class="nav-link active" onclick="showPage('about')">Про нас</a>
+                <a class="nav-link" onclick="showPage('philosophy')">Філософія</a>
+            </div>
+
+            <div class="nav-group">
+                <h4>Діяльність</h4>
+                <a class="nav-link" onclick="showPage('dev')">Розробка</a>
+                <a class="nav-link" onclick="showPage('design')">Дизайн</a>
+            </div>
+
+            <div class="nav-group">
+                <h4>Контакти</h4>
+                <a class="nav-link" onclick="showPage('contact')">Зв'язок</a>
+            </div>
+        </nav>
+    </aside>
+
+    <div class="main-content">
+        <section id="about" class="page active">
+            <h1>Цифрова екосистема.</h1>
+            <p><b>Spotinks</b> — це незалежне об'єднання розробників під керівництвом <b>Morivis</b>. Ми не просто пишемо код, ми створюємо інструменти, які змінюють досвід взаємодії з цифровим світом.</p>
+            <div class="feature-card">
+                <h3>Хто ми?</h3>
+                <p>Ми — команда (Void Team), яка фокусується на продуктивності, естетиці та стабільності. Наші проекти охоплюють шлях від ігрових механік Minecraft до системних утиліт на Rust.</p>
+            </div>
+        </section>
+
+        <section id="philosophy" class="page">
+            <h1>Філософія "Точки".</h1>
+            <p>Назва Spotinks походить від ідеї, що кожна велика система починається з однієї точки (Spot) та чорнила (Inks), яким пишеться код.</p>
+            <div class="feature-card">
+                <h3>Наші принципи</h3>
+                <p>1. Мінімалізм у дизайні.<br>2. Максималізм у продуктивності.<br>3. Відкритість до інновацій.</p>
+            </div>
+        </section>
+
+        <section id="dev" class="page">
+            <h1>Software Dev.</h1>
+            <p>Наш основний стек включає <b>Java</b> для серверних рішень та <b>Rust</b> для системного програмування.</p>
+            <div class="feature-card">
+                <h3>Напрямки</h3>
+                <p>• Створення унікальних Minecraft-плагінів.<br>• Розробка легких системних інструментів.<br>• Оптимізація існуючих Open-Source рішень.</p>
+            </div>
+        </section>
+
+        <section id="design" class="page">
+            <h1>System UI/UX.</h1>
+            <p>Ми вважаємо, що технічна досконалість неможлива без візуальної гармонії.</p>
+            <div class="feature-card">
+                <h3>Естетика Spotinks</h3>
+                <p>Ми проектуємо інтерфейси, які не заважають роботі, а стають її продовженням. Темні тони, чіткі лінії та акцентний неон.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="page">
+            <h1>Contact Core.</h1>
+            <p>Ми завжди відкриті для нових ідей та технічних викликів.</p>
+            <div class="feature-card">
+                <h3>Зв'язок</h3>
+                <p>Telegram: @morivis_void<br>GitHub: Xarol9<br>Спільнота: Void Team</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('sidebar').classList.toggle('open');
+            document.getElementById('overlay').classList.toggle('active');
+        }
+
+        function showPage(pageId) {
+            // Приховати всі сторінки
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            // Видалити активний клас з посилань
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            
+            // Показати потрібну сторінку
+            document.getElementById(pageId).classList.add('active');
+            
+            // Додати активний клас посиланню
+            event.currentTarget.classList.add('active');
+
+            // Закрити меню на мобілці після кліку
+            if (window.innerWidth <= 900) toggleMenu();
+
+            // Скрол вгору
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
