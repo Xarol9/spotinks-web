@@ -2,48 +2,97 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Spotinks | Wiki</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>VOID_WIKI</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .archive-list { list-style: none; }
+        .archive-item { 
+            border-bottom: 1px solid var(--border); 
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .archive-key { font-family: var(--font-mono); font-size: 10px; color: var(--accent); text-transform: uppercase; }
+        .archive-val { font-size: 0.9rem; font-weight: 600; text-align: right; }
+        .doc-section { margin-top: 40px; }
+    </style>
 </head>
 <body>
     <div class="glow"></div>
-    <header><div class="logo">KNOWLEDGE_BASE</div></header>
+    <header style="border: none; background: transparent;">
+        <div class="header-meta">DATA_ARCHIVE // ACCESS_LEVEL_01</div>
+        <div class="header-meta">FILESYSTEM: READ_ONLY</div>
+    </header>
 
-    <div class="container">
-        <h1>Docs.</h1>
+    <div class="container" style="padding-top: 20px;">
+        <div class="big-text glitch" data-text="DATA">DATA</div>
+        
         <div class="grid">
             <div class="card span-4">
-                <h3>Module: OS_CONFIG</h3>
-                <p>Мій Arch Linux сетап. Повна автоматизація через dotfiles. Використовую Wayland для максимальної плавності.</p>
-                <div class="code-box">$ nvim ~/.config/hypr/hyprland.conf</div>
+                <div class="big-label">SECTION_01 // BIO</div>
+                <div class="archive-list">
+                    <div class="archive-item">
+                        <span class="archive-key">Nickname</span>
+                        <span class="archive-val">Morivis</span>
+                    </div>
+                    <div class="archive-item">
+                        <span class="archive-key">Location</span>
+                        <span class="archive-val">Desna, UA [Sector 4]</span>
+                    </div>
+                    <div class="archive-item">
+                        <span class="archive-key">Status</span>
+                        <span class="archive-val">Lead / Void Team</span>
+                    </div>
+                </div>
             </div>
 
             <div class="card span-2">
-                <h3>Module: DESIGN</h3>
-                <p>Figma & Blockbench. UI/UX для проектів Void Team.</p>
+                <div class="big-label">SECTION_02 // LORE</div>
+                <div class="data-point">
+                    <div class="data-label">Project</div>
+                    <div class="data-value">BUNKER</div>
+                </div>
+                <p style="font-size: 10px; color: var(--text-dim); margin-top: 10px;">
+                    Sector 4 anomaly. Horror-based environment integration.
+                </p>
             </div>
 
             <div class="card span-2">
-                <h3>Module: SERVER [LOCKED]</h3>
-                <p></p>
+                <div class="big-label">SECTION_03 // DEV</div>
+                <div class="data-point">
+                    <div class="data-label">Logic</div>
+                    <div class="data-value">SOULKEEP</div>
+                </div>
+                <p style="font-size: 10px; color: var(--text-dim); margin-top: 10px;">
+                    Advanced inventory retention protocol for MC 1.21.11.
+                </p>
             </div>
 
-            <div class="card span-4" style="border-style: dashed; opacity: 0.7;">
-                <h3>Module: SOULKEEP [LOCKED]</h3>
-                <p>Документація буде доступна після релізу версії 1.21.11. Очікування даних...</p>
+            <div class="card span-4">
+                <div class="big-label">SECTION_04 // TIMELINE</div>
+                <div class="code-box" style="font-size: 9px; line-height: 2;">
+                    [2025.12] - INITIAL_VOID_OS_BOOT<br>
+                    [2026.02] - SOULKEEP_ALPHA_BUILD<br>
+                    [2026.05] - V2.6_DESIGN_SYSTEM_DEPLOYED
+                </div>
             </div>
         </div>
     </div>
 
-<nav class="nav">
-    <a href="index.html" class="nav-link">Home</a>
-    <a href="wiki.html" class="nav-link">Wiki</a>
-    <a href="lab.html" class="nav-link">Lab</a>
-    <a href="media.html" class="nav-link">Media</a>
-    <a href="setup.html" class="nav-link">Setup</a>
-</nav>
+    <nav class="nav" style="max-width: 280px; justify-content: space-around;">
+        <a href="index.html" class="nav-link" title="CORE">◈</a>
+        <a href="wiki.html" class="nav-link active" title="DATA">📂</a>
+        <a href="lab.html" class="nav-link" title="LAB">🧪</a>
+        <a href="media.html" class="nav-link" title="LINK">📡</a>
+    </nav>
 
     <script src="app.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            if(window.notify) window.notify("ARCHIVE_DATA_LOADED");
+        });
+    </script>
 </body>
 </html>

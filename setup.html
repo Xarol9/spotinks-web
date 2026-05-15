@@ -2,48 +2,93 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Spotinks | Setup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>VOID_SETUP</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .spec-list { list-style: none; margin-top: 10px; }
+        .spec-item { 
+            display: flex; 
+            justify-content: space-between; 
+            font-family: var(--font-mono); 
+            font-size: 9px; 
+            padding: 5px 0; 
+            border-bottom: 1px solid var(--border);
+        }
+        .spec-key { color: var(--text-dim); text-transform: uppercase; }
+        .spec-val { color: var(--accent); }
+    </style>
 </head>
 <body>
     <div class="glow"></div>
-    <header><div class="logo">STATION_DEVICES</div></header>
+    <header style="border: none; background: transparent;">
+        <div class="header-meta">STATION_01 // HARDWARE_LOG</div>
+        <div class="header-meta">ENVIROMENT: STABLE</div>
+    </header>
 
-    <div class="container">
-        <h1>Tech.</h1>
+    <div class="container" style="padding-top: 20px;">
+        <div class="big-text glitch" data-text="SYST">SYST</div>
+        
         <div class="grid">
             <div class="card span-4">
-                <h3>Laptop Station</h3>
-                <p><strong>ASUS VivoBook Max X541NC</strong><br>4GB RAM | Zen Kernel | Arch Linux</p>
-                <div class="code-box">CPU: Intel Inside // GPU: GeForce 810M</div>
+                <div class="big-label">01 // Primary_Node</div>
+                <div class="data-value">ASUS VivoBook Max</div>
+                <div class="spec-list">
+                    <div class="spec-item"><span class="spec-key">Model</span> <span class="spec-val">X541NC</span></div>
+                    <div class="spec-item"><span class="spec-key">CPU</span> <span class="spec-val">Pentium N4200</span></div>
+                    <div class="spec-item"><span class="spec-key">GPU</span> <span class="spec-val">NVIDIA 810M</span></div>
+                    <div class="spec-item"><span class="spec-key">RAM</span> <span class="spec-val">4GB DDR3L</span></div>
+                </div>
+            </div>
+
+            <div class="card span-2">
+                <div class="big-label">02 // OS_Core</div>
+                <div class="data-value">Arch Linux</div>
+                <div class="code-box" style="font-size: 8px;">
+                    KERNEL: linux-zen<br>
+                    WM: Hyprland / Niri<br>
+                    SHELL: Zsh
+                </div>
+            </div>
+
+            <div class="card span-2">
+                <div class="big-label">03 // Mobile_Node</div>
+                <div class="data-value">iPhone 11</div>
+                <div class="spec-list">
+                    <div class="spec-item"><span class="spec-key">Firmware</span> <span class="spec-val">iOS 26 Beta</span></div>
+                    <div class="spec-item"><span class="spec-key">Case</span> <span class="spec-val">Stussy_Black</span></div>
+                </div>
             </div>
 
             <div class="card span-4">
-                <h3>Mobile Unit</h3>
-                <p><strong>iPhone 11</strong><br>iOS 26.5 | Stussy Case | </p>
-            </div>
-
-            <div class="card span-2">
-                <h3>IDE</h3>
-                <p>VS Code / Vim</p>
-            </div>
-
-            <div class="card span-2">
-                <h3>Shell</h3>
-                <p>Zsh / Foot</p>
+                <div class="big-label">04 // Terminal_Environment</div>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <div class="data-point" style="flex: 1;">
+                        <div class="data-label">IDE</div>
+                        <div class="data-value" style="font-size: 0.9rem;">VS Code / Helix</div>
+                    </div>
+                    <div class="data-point" style="flex: 1;">
+                        <div class="data-label">Design</div>
+                        <div class="data-value" style="font-size: 0.9rem;">Figma / Blockbench</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <nav class="nav">
-    <a href="index.html" class="nav-link">Home</a>
-    <a href="wiki.html" class="nav-link">Wiki</a>
-    <a href="lab.html" class="nav-link">Lab</a>
-    <a href="media.html" class="nav-link">Media</a>
-    <a href="setup.html" class="nav-link">Setup</a>
-</nav>
+    <nav class="nav" style="max-width: 320px; justify-content: space-around;">
+        <a href="index.html" class="nav-link" title="CORE">◈</a>
+        <a href="wiki.html" class="nav-link" title="DATA">📂</a>
+        <a href="lab.html" class="nav-link" title="LAB">🧪</a>
+        <a href="media.html" class="nav-link" title="LINK">📡</a>
+        <a href="setup.html" class="nav-link active" title="SYST">⚙</a>
+    </nav>
 
     <script src="app.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            if(window.notify) window.notify("HARDWARE_MANIFEST_LOADED");
+        });
+    </script>
 </body>
 </html>

@@ -2,54 +2,108 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Spotinks | Lab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>VOID_LAB</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .process-log {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--accent);
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+        .status-badge {
+            font-size: 8px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: var(--accent-dim);
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+        .lab-card {
+            border-left: 2px solid var(--accent);
+        }
+    </style>
 </head>
 <body>
     <div class="glow"></div>
-    <header>
-        <div class="logo">VOID_LAB // RESEARCH</div>
-        <div class="sys-status">SENSORS: ACTIVE</div>
+    <header style="border: none; background: transparent;">
+        <div class="header-meta">LAB_ENVIRONMENT // COMPILING_STATION</div>
+        <div class="header-meta">STABLE_THREADS: 4</div>
     </header>
 
-    <div class="container">
-        <h1>Lab.</h1>
+    <div class="container" style="padding-top: 20px;">
+        <div class="big-text glitch" data-text="LAB">LAB</div>
+        
         <div class="grid">
-            <div class="card span-4">
-                <h3>Current Experiment: Zarts</h3>
-                <p>Розробка хоррор-модпаку. Тестування атмосферних шейдерів та скриптів для Bunker Life Bunker.</p>
-                <div class="code-box">Progress: [||------] 20%</div>
-            </div>
-
-            <div class="card span-4">
-                <h3>System Logs</h3>
-                <div class="code-box" style="color: #888; font-size: 0.7rem;">
-                    [15.05.2026] Оптимізовано рендер душ у SoulKeep.<br>
-                    [12.05.2026] Перехід на нову версію Niri compositor.<br>
-                    [10.05.2026] Створення перших 3D моделей для бункера.
+            <div class="card span-4 lab-card">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div class="big-label">Target_01 // Plugin_Dev</div>
+                    <span class="status-badge">Active_Build</span>
+                </div>
+                <div class="data-value">SoulKeep // v1.21.11</div>
+                <p style="font-size: 11px; color: var(--text-dim); margin-top: 5px;">
+                    Java-based inventory retention logic. Implementing soul-tear mechanics for hardcore survival nodes.
+                </p>
+                <div class="code-box">
+                    > javac SoulKeep.java --release 21<br>
+                    > building inventory_map... [DONE]<br>
+                    > status: stable_deployment
                 </div>
             </div>
 
-            <div class="card span-2">
-                <h3>Engine</h3>
-                <p>Rust / Bevy</p>
+            <div class="card span-2 lab-card">
+                <div class="big-label">Target_02 // Rust_App</div>
+                <div class="data-value">Void_Browser</div>
+                <div class="process-log">
+                    [cargo] Compiling void_core...<br>
+                    [core] Initializing engine...<br>
+                    [!] Memory: Optimized
+                </div>
             </div>
 
-            <div class="card span-2">
-                <h3>Status</h3>
-                <p>Experimental</p>
+            <div class="card span-2 lab-card">
+                <div class="big-label">Target_03 // Web_Node</div>
+                <div class="data-value">Bunker_Life</div>
+                <div class="process-log">
+                    [css] Injecting horror_theme...<br>
+                    [js] Animating shadows...<br>
+                    [ok] UI_Responsive
+                </div>
+            </div>
+
+            <div class="card span-4" onclick="window.open('https://github.com/xarol9', '_blank')" style="cursor:pointer; text-align:center; background: var(--accent-dim);">
+                <div class="data-value" style="font-size: 1.2rem;">ACCESS_GITHUB_REPOS</div>
+                <div class="header-meta" style="margin-top: 5px;">SYNCING_WITH_REMOTE_SERVER</div>
+            </div>
+
+            <div class="card span-4">
+                <div class="big-label">Environment_Stack</div>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
+                    <span class="v-tag">RUST_CARGO</span>
+                    <span class="v-tag">JAVA_OPENJDK</span>
+                    <span class="v-tag">BLOCKBENCH</span>
+                    <span class="v-tag">FIGMA_UI</span>
+                    <span class="v-tag">GIT_VERSIONING</span>
+                </div>
             </div>
         </div>
     </div>
 
-    <nav class="nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="wiki.html" class="nav-link">Wiki</a>
-        <a href="lab.html" class="nav-link active">Lab</a>
-        <a href="media.html" class="nav-link">Media</a>
-        <a href="setup.html" class="nav-link">Setup</a>
+    <nav class="nav" style="max-width: 320px; justify-content: space-around;">
+        <a href="index.html" class="nav-link" title="CORE">◈</a>
+        <a href="wiki.html" class="nav-link" title="DATA">📂</a>
+        <a href="lab.html" class="nav-link active" title="LAB">🧪</a>
+        <a href="media.html" class="nav-link" title="LINK">📡</a>
+        <a href="setup.html" class="nav-link" title="SYST">⚙</a>
     </nav>
+
     <script src="app.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            if(window.notify) window.notify("LAB_UNIT_READY");
+        });
+    </script>
 </body>
 </html>

@@ -3,55 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Spotinks | Digital Core</title>
+    <title>VOID_NODE</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Extreme Minimalist UI */
+        .header-meta { font-family: var(--font-mono); font-size: 8px; color: var(--accent); letter-spacing: 2px; }
+        .data-point { font-family: var(--font-mono); border-left: 1px solid var(--accent); padding-left: 10px; margin: 15px 0; }
+        .data-label { font-size: 7px; text-transform: uppercase; color: var(--text-dim); }
+        .data-value { font-size: 1.2rem; font-weight: 800; color: #fff; }
+        
+        /* Crosshair Effect */
+        .ch { position: fixed; pointer-events: none; z-index: 999; border: 1px solid rgba(0, 240, 255, 0.2); }
+        .ch-h { width: 100vw; height: 1px; }
+        .ch-v { height: 100vh; width: 1px; }
+
+        .big-text { 
+            font-size: clamp(4rem, 25vw, 12rem); 
+            font-weight: 950; 
+            line-height: 0.7; 
+            letter-spacing: -0.08em; 
+            margin: 40px 0;
+            filter: drop-shadow(0 0 20px var(--accent-dim));
+        }
+    </style>
 </head>
 <body>
     <div class="glow"></div>
-    <header>
-        <div class="logo">VOID_TEAM // STATION_01</div>
-        <div class="sys-status">MEM_OK: 2.6_STABLE</div>
+    <div class="ch ch-h" id="ch-h"></div>
+    <div class="ch ch-v" id="ch-v"></div>
+
+    <header style="border: none; background: transparent;">
+        <div class="header-meta">MVR_STATION // [ 51.12 N, 31.02 E ]</div>
+        <div class="header-meta">STATUS: ONLINE</div>
     </header>
 
-    <div class="container">
-        <h1 class="glitch" data-text="Spotinks.">Spotinks.</h1>
+    <div class="container" style="padding-top: 20px;">
+        <div class="big-text glitch" data-text="VOID">VOID</div>
         
         <div class="grid">
-            <div class="card span-4">
-                <h3>01 / Active Mission</h3>
-                <p>Розробка <strong>SoulKeep</strong>. Створюю унікальну механіку виживання для Minecraft 1.21.11. Система душ активована.</p>
-                <div class="code-box">> soulkeep --status: in_dev</div>
-            </div>
-            
             <div class="card span-2">
-                <h3>02 / Environment</h3>
-                <p>Arch Linux<br><span style="color:var(--accent)">Hyprland + Zen</span></p>
-            </div>
-            
-            <div class="card span-2">
-                <h3>03 / Engineering</h3>
-                <p>Rust / Java<br><span style="color:var(--text-dim)">Backend Focus</span></p>
+                <div class="data-point">
+                    <div class="data-label">Identity</div>
+                    <div class="data-value">14.08_UA</div>
+                </div>
             </div>
 
-            <div class="card span-4">
-                <h3>04 / Social Links</h3>
-                <div class="socials">
-                    <a href="https://github.com/xarol9" target="_blank">GitHub</a>
-                    <a href="#">YouTube</a>
-                    <a href="#">TikTok</a>
+            <div class="card span-2">
+                <div class="data-point">
+                    <div class="data-label">Kernel</div>
+                    <div class="data-value">ARCH_ZEN</div>
+                </div>
+            </div>
+
+            <div class="card span-4" onclick="location.href='wiki.html'">
+                <div class="data-point" style="border-color: #fff;">
+                    <div class="data-label">Active_Stream</div>
+                    <div class="data-value" style="font-size: 1.5rem;">SOULKEEP_1.21.11</div>
+                    <div style="font-size: 9px; color: var(--accent); margin-top: 5px;">[ DEPLOYED // STABLE ]</div>
+                </div>
+            </div>
+
+            <div class="card span-2">
+                <div class="data-point">
+                    <div class="data-label">Stack</div>
+                    <div class="data-value">RS // JV // UI</div>
+                </div>
+            </div>
+
+            <div class="card span-2">
+                <div class="data-point">
+                    <div class="data-label">Network</div>
+                    <div style="display: flex; gap: 15px; margin-top: 8px;">
+                        <a href="https://github.com/xarol9" target="_blank" style="color: var(--accent); text-decoration: none; font-size: 10px;">GH</a>
+                        <a href="#" style="color: var(--accent); text-decoration: none; font-size: 10px;">YT</a>
+                        <a href="#" style="color: var(--accent); text-decoration: none; font-size: 10px;">TK</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <nav class="nav">
-    <a href="index.html" class="nav-link">Home</a>
-    <a href="wiki.html" class="nav-link">Wiki</a>
-    <a href="lab.html" class="nav-link">Lab</a>
-    <a href="media.html" class="nav-link">Media</a>
-    <a href="setup.html" class="nav-link">Setup</a>
-</nav>
+    <nav class="nav" style="max-width: 280px; justify-content: space-around;">
+        <a href="index.html" class="nav-link active" title="CORE">◈</a>
+        <a href="wiki.html" class="nav-link" title="DATA">📂</a>
+        <a href="media.html" class="nav-link" title="LINK">📡</a>
+        <a href="lab.html" class="nav-link" title="LAB">🧪</a>
+        <a href="setup.html" class="nav-link" title="SYST">⚙</a>
+    </nav>
 
     <script src="app.js"></script>
+    <script>
+        // Crosshair movement
+        document.addEventListener('mousemove', (e) => {
+            document.getElementById('ch-h').style.top = e.clientY + 'px';
+            document.getElementById('ch-v').style.left = e.clientX + 'px';
+        });
+
+        window.addEventListener('load', () => {
+            if(window.notify) window.notify("STATION_LOGGED_IN");
+        });
+    </script>
 </body>
 </html>
